@@ -83,6 +83,9 @@ class MainActivity : AppCompatActivity() {
         return res
     }
 
+    //Personalización de errores
+    class IllegalPasswordException(message:String): Exception(message)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -332,7 +335,56 @@ class MainActivity : AppCompatActivity() {
         println(anonimo.passport)
 
         jota.die()
+        jota.height = 1.8f
+        jota.passport = "C3565DF"
+
+        jota.let {
+            it.die()
+            it.height = 1.8f
+            it.passport = "C3565DF"
+        }
+
+        jota.apply {
+            this.die()
+            height = 1.9f
+            passport = "D8965VF"
+        }.also {
+            it.alive = true
+        }
+
+        var juan = Person("Juan", "D2586694").apply {
+            this.die()
+            this.height = 1.9f
+            this.passport = "GH258456"
+        }
+
+        var maria = Person("Maria","RGDS62956", 1.7f).run {
+            this.height = 1.9f
+            this.passport = "DF855896"
+
+            "Maria es muy alta"
+        }
+
+        var marta = with(Person("Marta", "JK878964", 1.6f)){
+            this.height = 1.9f
+            this.passport ="D8963F6"
+
+            "Marta es chaparra"
+        }
+
+        println("----------OPERADOR ELVIS AQUI----------")
+        var pais : String? = "Rusia"
+        pais = pais?.uppercase() ?: "DESCONOCIDO"
+        println(pais)
+
+        var ciudad : String? = null
+        ciudad = ciudad?.uppercase() ?: "DESCONOCIDO"
+        println(ciudad)
+
+        println("----------OPERADOR ELVIS FIN----------")
+
         println(jota.alive)
+
 
         var bicho:Pokemon = Pokemon()
         println(bicho.getName())
@@ -397,6 +449,23 @@ class MainActivity : AppCompatActivity() {
         }finally {//el finally siempre se va a ejecutar pase lo que pase
             println("Pase lo que pase vamos hacer cositas")
         }
+
+        var res1 = value_try(20,2)
+        println(res1)
+        var res2 = value_try(10,0)
+        println(res2)
+
+       /* var password: String = "1234"
+        try {
+            if(password.length < 6){
+                //Si el throw no estuviera en un try catch se para la aplicación y muestra el error personalizado
+                throw IllegalPasswordException("Password muy corta")
+            }else{
+                println("Password segura")
+            }
+        }catch (e:Exception){
+            println("Error de contraseña, la contraseña es muy debil")
+        }*/
 
 
         //dataclass = Solo almacena datos preferentemente no almacenar funciones
