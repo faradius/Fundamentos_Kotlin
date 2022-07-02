@@ -19,6 +19,23 @@ class MainActivity : AppCompatActivity() {
         const val moneda = "EUR" //const val alamcena una constante
     }
 
+    /*lateinit significa que estoy creando una variable que no estoy incializando pero que la
+    voy a ocupar despues o que le voy a dar un valor despues, esto se realiza para evitar que
+    ciertas variables esten en null
+    * */
+    private lateinit var cadena:String
+
+    //En este caso no se puede para este tipo de dato ya que afuerzas pide incializar
+    //private lateinit var resi:Boolean
+
+    //Este tipo de variable que es de tipo Pokemon afuerzas debe llevar lateinit por que se vuelve en un
+    //atributo de la clase Main activity, ya que esta colocado fuera del oncreate como una variable global
+    //da entender que es una variable que esta esperando un valor despues cuando se le haya invocada o utilizada
+    //pero esto se puede poner dentro del oncreate sin la palabra lateinit y no marca porque da por hecho que se va a ocupar
+
+    //private lateinit var pok: Pokemon
+
+
     var saldo : Float = 300.54f
     var sueldo = 764.82f
     var entero : Int = 62
@@ -382,6 +399,17 @@ class MainActivity : AppCompatActivity() {
         println(ciudad)
 
         println("----------OPERADOR ELVIS FIN----------")
+
+        //La palabra lazy tiene que funcionar con valores no con variables
+        //crea la variable y no le asigna valor, se inicializa cuando sea utilizada por primera vez
+        val calle: String by lazy{
+            "Nuevo"
+        }
+        /*El uso de lazy es para poder ejecutar codigo muy pesado cuando es solicitado en un cierto
+        * lugar, y esto hace que el programa espere para despues ejecutarlo cunando sea necesario,
+        * esto nos ayuda a optimizar el rendimiento y para el multi hilo*/
+        var direccion = "$pais - $ciudad - $calle"
+        println(direccion)
 
         println(jota.alive)
 
