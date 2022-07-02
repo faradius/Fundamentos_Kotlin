@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 a/b //debe llevar un valor como las lambdas
             }catch (e: Exception){
                 println("Vamos a manejar este error")
-                "División no permitida"
+                "División no permitidas"
             }
         return res
     }
