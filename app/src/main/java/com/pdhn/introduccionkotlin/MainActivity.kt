@@ -1,5 +1,6 @@
 package com.pdhn.introduccionkotlin
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import java.lang.Exception
@@ -9,6 +10,8 @@ typealias aliasDato = MutableMap<Int, ArrayList<String>>
 typealias aliasFuncion = (a:Int, b:Int) -> Int
 
 class MainActivity : AppCompatActivity() {
+    //val context: Context = this
+
     //Objeto anonimo
     object fernanda{
         var apodo ="fer"
@@ -534,6 +537,17 @@ class MainActivity : AppCompatActivity() {
         println(hoy.jornada) //imprime las horas laborales de lunes
 
         hoy = Dias.DOMINGO
+
+
+        /* Probanco como usar un hashMap
+       val city = HashMap<String, Any>()
+        city.put("telefono","782 114 25 25")
+        city["name"] = "Bogota"
+        city["state"] = "Cundinamarca"
+        city["country"] = "Colombia"
+
+        Toast.makeText(this,"forma 1: ${city.get("telefono").toString()} forma2: ${city["name"]}",Toast.LENGTH_SHORT).show()
+        */
     }
 
     fun mostrar_saldo(){
